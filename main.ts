@@ -1,6 +1,7 @@
 import yargs from 'https://deno.land/x/yargs/deno.ts'
 import { Arguments } from 'https://deno.land/x/yargs/deno-types.ts'
 import { challengeOne } from "./challenges/setOne/challengeOne.ts";
+import { challengeTwo } from "./challenges/setOne/challengeTwo.ts"
 
 function main() {
 
@@ -15,6 +16,7 @@ function parseArgs(): Arguments {
         .command("one", "Cryptopals Set One", (yargs: any) => 
             yargs
             .command("one", "Cryptopals Challenge 1-1", {}, challengeOne)
+            .command("two", "Cryptopals Challenge 1-2", {}, challengeTwo)
             .demandCommand(1)
         )
         .help()

@@ -1,5 +1,7 @@
 import {Result, Ok, Err} from "https://deno.land/x/monads@v0.5.10/mod.ts"
 
+import {mapArray} from 'https://raw.githubusercontent.com/selfrefactor/rambda/master/dist/rambda.esm.js'
+
 export enum InvalidByteStringError {
     INVALID_LENGTH,
     INVALID_CHARACTERS
@@ -29,4 +31,10 @@ export function hexStringToBytes(hexString: string): Result<Uint8Array, InvalidB
 
         return Ok(Uint8Array.from(byteIntArray))
     }
+}
+
+
+export function bytesToHexString(bytes: Uint8Array): string {
+    return mapArray((byte: number) => byte.toString(16),  bytes)
+        .join("")
 }
